@@ -6,7 +6,7 @@ server.bind_func("/", [](session, data){
     if session.method == "GET"
         session.send_response(netutils.state_codes.code_200, "Hello, world!", "text/plain")
     else
-        session.send_response(netutils.state_codes.code_200, post_data, "text/plain")
+        session.send_response(netutils.state_codes.code_200, data, "text/plain")
     end
 })
 server.listen(5000)
