@@ -1,0 +1,34 @@
+{
+    "image": "ubuntu:22.04",
+    "waitFor": "onCreateCommand",
+    "updateContentCommand": "pip install -r requirements.txt",
+    "postCreateCommand": [
+        "wget https://github.com/covscript/csbuild/releases/download/ubuntu-schedule/covscript-amd64-nightly.deb",
+        "dpkg -i covscript-amd64-nightly.deb",
+        "cspkg -i ecs_bootstrap netutils.csym --yes"
+    ],
+    "postAttachCommand": {
+        "server": "ecs hello.ecs"
+    },
+    "portsAttributes": {
+        "5000": {
+            "label": "Application",
+            "onAutoForward": "openPreview"
+        }
+    },
+    "customizations": {
+        "codespaces": {
+            "openFiles": [
+                "hello.ecs"
+            ]
+        },
+        "vscode": {
+            "extensions": [
+                "mikecovlee.covscript"
+            ]
+        }
+    },
+    "forwardPorts": [
+        5000
+    ]
+}
