@@ -1,8 +1,8 @@
 {
+    "name": "CovScript Basic",
     "image": "ubuntu:22.04",
     "waitFor": "onCreateCommand",
     "onCreateCommand": "bash .devcontainer/init-env.sh",
-    "updateContentCommand": "cspkg -i ecs_bootstrap netutils.csym --yes",
     "postAttachCommand": {
         "server": "ecs hello.ecs"
     },
